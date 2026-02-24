@@ -31,7 +31,8 @@ using Pygame, showing the robot's movements, states, environment, and how exactl
 
   - 2 Enum classes (Direction, RoboteState)
   - Movement and assigning coordinates Functions (turn_left, turn_right, next position( assign the coordinates of next position), move_forward(move robot if no obstacles or wall)
-  - Sensor Function( sense:check infront of robot only, sensewithinfo:print info that been sensed 'used for debugging', sense_all_direction:360 c sensor check all cells in all direction
+  - Sensor Function( sense:check infront of robot only, sense_with_info:print info that been sensed if there's a wall, goal or obstacles 'used for debugging', sense_all_direction:360 c sensor check all cells in all direction around robot.
+  - find_path_bfs: 
 ---
 
 ## Features
