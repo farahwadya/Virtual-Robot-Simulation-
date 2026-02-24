@@ -32,7 +32,8 @@ using Pygame, showing the robot's movements, states, environment, and how exactl
   - 2 Enum classes (Direction, RoboteState)
   - Movement and assigning coordinates Functions (turn_left, turn_right, next position( assign the coordinates of next position), move_forward(move robot if no obstacles or wall)
   - Sensor Function( sense:check infront of robot only, sense_with_info:print info that been sensed if there's a wall, goal or obstacles 'used for debugging', sense_all_direction:360 c sensor check all cells in all direction around robot.
-  - find_path_bfs: 
+  - find_path_bfs: This function helps the robot find the shortest safe path from its current position to the goal.
+  - decide: This function acts as the robot’s brain. It analyzes sensor data and determines the next action based on the robot’s current state and environment conditions.
 ---
 
 ## Features
