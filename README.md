@@ -1,6 +1,6 @@
-# Virtual-Robot-Simulation-
-no AI libraries are used, all logic are written while programming
 # Virtual Robot Simulation
+
+No AI libraries are used. All logic and algorithms are implemented from scratch.
 
 Python-based project simulating an autonomous robot in a 2D environment with path planning, obstacle avoidance, FSM, and visualization.
 
@@ -8,71 +8,133 @@ Python-based project simulating an autonomous robot in a 2D environment with pat
 
 ## Project Description
 
-This project implements a virtual autonomous robot in a 2D grid environment. 
-The robot can navigate to a goal while avoiding obstacles and walls, using BFS for path planning 
-and a finite state machine (FSM) for decision-making. The simulation is visualized 
-using Pygame, showing the robot's movements, states, environment, and how exactly it's moving to reach it's goal.
+This project implements a virtual autonomous robot in a 2D grid environment.  
+The robot navigates toward a goal while avoiding obstacles and walls using:
+
+- Breadth-First Search (BFS) for path planning  
+- A Finite State Machine (FSM) for decision-making  
+
+The simulation is visualized using Pygame, displaying the robot's movement, states, environment, and how it reaches its goal step by step.
 
 ---
 
-## Libraries used
+## Libraries Used
 
-- Pygame: for visualization
-- collections: to import deque. we use it to implement BFS algorithim
+- **Pygame** – for visualization  
+- **collections (deque)** – to implement the BFS algorithm  
 
 ---
-## Classes and Functions per class
 
-- **Environment:** Responsible for managing the grid, obstacles, goal detection, and boundary checking.
+## System Structure
 
-  - is_within_bounds, is_obstacle, is_goal, display: this func are used in case there are no visual screen so it display the enviroment
- 
-- **Robot**: Handles movement, sensing, decision-making, state transitions, and path planning.
+### Environment
+Responsible for managing the grid, obstacles, goal detection, and boundary checking.
 
-  - 2 Enum classes (Direction, RoboteState)
-  - Movement and assigning coordinates Functions (turn_left, turn_right, next position( assign the coordinates of next position), move_forward(move robot if no obstacles or wall)
-  - Sensor Function( sense:check infront of robot only, sense_with_info:print info that been sensed if there's a wall, goal or obstacles 'used for debugging', sense_all_direction:360 c sensor check all cells in all direction around robot.
-  - find_path_bfs: This function helps the robot find the shortest safe path from its current position to the goal.
-  - decide: This function acts as the robot’s brain. It analyzes sensor data and determines the next action based on the robot’s current state and environment conditions.
+Functions:
+- `is_within_bounds`
+- `is_obstacle`
+- `is_goal`
+- `display` (used when running without visualization)
+
+---
+
+### Robot
+Handles movement, sensing, decision-making, state transitions, and path planning.
+
+Includes:
+- 2 Enum classes (`Direction`, `RobotState`)
+- Movement functions:
+  - `turn_left`
+  - `turn_right`
+  - `next_position` (calculates next coordinates)
+  - `move_forward` (moves robot if no obstacle or wall)
+
+- Sensor functions:
+  - `sense` (checks only in front of the robot)
+  - `sense_with_info` (returns detailed sensor data for debugging)
+  - `sense_all_directions` (360° sensing around the robot)
+
+- `find_path_bfs`  
+  Finds the shortest safe path from the robot’s current position to the goal.
+
+- `decide`  
+  The robot’s "brain". Analyzes sensor data and determines the next action based on the current state.
+
+---
+
+### Visualizer
+Implements the visualization window using Pygame.
+
+Functions:
+- `draw_grid`: to draw all cells and bounds of the screen.
+- `draw_robot_state`: to add a note about robot state (idle, avoiding, moving).
+- `update`: to update screen after each movement
+
+---
+
+### Simulation
+Manages execution of the robot inside the environment.
+
+Functions:
+- `step()` – Executes a single logical step
+- `run()` – Runs the full simulation loop
+- `display_robot_info()` – Prints debugging data
+
+---
+
+### Main
+Entry point of the program. Initializes environment, robot, and simulation.
+
 ---
 
 ## Features
 
 ### Core Features
-- 2D grid-based environment with boundaries and obstacles
-- Robot model with position, orientation, and internal states: IDLE, MOVING, AVOIDING, FINISHED
-- Movement system: move forward, turn left/right
-- Collision prevention and obstacle detection
-- Decision-making based on virtual sensor inputs
-- Simulation loop with step-by-step execution
+- 2D grid-based environment
+- Robot with position, orientation, and internal states:
+  - IDLE
+  - MOVING
+  - AVOIDING
+  - FINISHED
+- Movement system (forward, left, right)
+- Collision prevention
+- Sensor-based decision-making
+- Step-by-step simulation loop
 
-### Extension Tracks Implemented
-- Path Planning using BFS algorithm
-- Obstacle Avoidance with reactive decision-making ( integrated with decide movement method in a special case when robot are in avoiding state).
-- Finite State Machine (FSM) for state-based behavior
-- Visualization using Pygame showing robot, obstacles, goal, and states
+---
+
+## Extension Tracks Implemented
+
+- BFS Path Planning
+- Reactive Obstacle Avoidance
+- Finite State Machine (FSM)
+- Pygame Visualization
 
 ---
 
 ## Algorithms & Logic
 
 ### 1. BFS Path Planning
-- Finds the shortest path from the robot's current position to the goal
-- Recalculates path if blocked or path completed
-- Represented as a list of directions: [NORTH, EAST, EAST, SOUTH, ...]
+- Finds the shortest path to the goal
+- Recalculates if path becomes blocked
+- Returns a list of directions:
+  `[NORTH, EAST, EAST, SOUTH, ...]`
 
 ### 2. Finite State Machine (FSM)
-- States:
-  - IDLE: Robot waits before starting
-  - MOVING: Follows BFS path toward goal
-  - AVOIDING: Reacts to obstacles or walls dynamically
-  - FINISHED: Goal reached
-- Transitions occur based on sensor inputs or reaching path end
+
+States:
+- IDLE
+- MOVING
+- AVOIDING
+- FINISHED
+
+Transitions depend on sensor input and environment conditions.
 
 ### 3. Obstacle Avoidance
-- Uses 360-degree virtual sensors
-- Priority directions: right → left → forward → backward
-- Turns toward clear path if obstacle detected
+- Uses 360° virtual sensing
+- Direction priority:
+  Right -> Left -> Forward -> Backward
+- Switches state when obstacle detected
 
 ---
 
@@ -80,19 +142,40 @@ using Pygame, showing the robot's movements, states, environment, and how exactl
 
 ### Requirements
 - Python 3.x
-- Pygame library
+- Pygame
 
-Install Pygame using pip:
+Install Pygame:
+
 ```bash
 pip install pygame
+## Installation
+
+### Requirements
+- Python 3.x
+- Pygame
+
+### 1️- Clone the repository
+
+```bash
+git clone https://github.com/farahwadya/Virtual-Robot-Simulation.git
+cd your-repository-name
+2️- (Optional) Create a virtual environment
+python -m venv venv
+
+Activate it:
+
+Windows
+
+venv\Scripts\activate
+
+Mac/Linux
+
+source venv/bin/activate
+3️- Install dependencies
+pip install pygame
 Running the Simulation
-
-Clone the repository
-
-Run the main script:
-
 python main.py
 
-Observe the robot moving in the Pygame window
+The Pygame window will open showing the robot navigating the environment.
+Close the window to stop the simulation.
 
-Press the close button to exit simulation
