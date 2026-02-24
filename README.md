@@ -21,6 +21,16 @@ using Pygame, showing the robot's movements, states, environment, and how exactl
 - collections: to import deque. we use it to implement BFS algorithim
 
 ---
+## Classes and Functions per class
+
+- Environment:
+  - is_within_bounds, is_obstacle, is_goal, display: this func are used in case there are no visual screen so it display the enviroment
+- Robot:
+  - 2 Enum classes (Direction, RoboteState)
+  - Movment and assign coordinates Function (turn_left, turn_right, next position( assign the coordinates of next position), move_forward(move robot if no obstacles or wall)
+  - Sensor Function( sense:check infront of robot only, sensewithinfo:print info that been sensed 'used for debugging', sense_all_direction:360 c sensor check all cells in all direction
+---
+
 ## Features
 
 ### Core Features
