@@ -153,6 +153,7 @@ pip install pygame
 ### Requirements
 - Python 3.x
 - Pygame
+- collections
 
 ### 1️- Clone the repository
 
