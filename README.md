@@ -1,4 +1,7 @@
+
 # Virtual Robot Simulation
+`Name : Farah Alwadya
+UNiversity ID:120220524`
 
 No AI libraries are used. All logic and algorithms are implemented from scratch.
 
